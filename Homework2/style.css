@@ -57,7 +57,6 @@ h1 {
     font-size: 16px;
 }
 
-
 svg {
     width: 100%;
     height: auto;
@@ -109,7 +108,7 @@ svg {
     fill: #666;
 }
 
-
+/* Responsive adjustments */
 @media (max-width: 1000px) {
     #dashboard {
         grid-template-columns: 1fr;

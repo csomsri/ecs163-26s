@@ -283,7 +283,7 @@ function drawBarChart(data) {
             avgTotal: avgTotal
     }));
 
-    // Sort from strongest to weakest
+    // Sort from strongest to weakest from total stat
     typeStats.sort((a, b) => d3.descending(a.avgTotal, b.avgTotal));
 
     // Categorial mapping of x axis being based on type
@@ -360,7 +360,7 @@ function drawBarChart(data) {
 
 }
 
-
+// This function sets up the filters used for the star chart
 function setupPokemonFilters(data) {
     // Grab from gen filter
     const generationSelect = d3.select("#generation-filter");
@@ -483,7 +483,8 @@ function drawStarPlot(pokemon) {
         { stat: "Speed", value: pokemon.Speed }
     ];
 
-    const maxStat = 200;
+    // Most a stat can go
+    const maxStat = 255;
 
     const angleSlice = (2 * Math.PI) / stats.length;
 
@@ -502,7 +503,7 @@ function drawStarPlot(pokemon) {
         .attr("transform", `translate(${centerX}, ${centerY})`);
 
     // Background rings
-    const ringValues = [50, 100, 150, 200];
+    const ringValues = [50, 100, 150, 200, 255]; // Fixed to 255 
 
     chart.selectAll(".ring-label")
         .data(ringValues)
@@ -607,5 +608,5 @@ function drawStarPlot(pokemon) {
         .attr("text-anchor", "middle")
         .attr("font-size", "11px")
         .attr("fill", "#666")
-        .text("Each axis is a base stat and rings show stat values from 50 to 200");
+        .text("Each axis is a base stat and rings show stat values from 50 to 255");
 }
